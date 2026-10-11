@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10142c">
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="apple-touch-icon" href="logo.png">
+  <title>7. Sınıf Fen 1. Dönem Uzay Çağı Test Oyunu | Set 1</title>
+  <meta name="description" content="7. sınıf fen bilimleri 1. dönem Uzay Çağı ünitesi için 12 soruluk uzay ve evren bilgi oyunu. İki takımla yarış, konuları eğlenerek tekrar et.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="tr_TR">
+  <meta property="og:site_name" content="Uzay Yarışı">
+  <meta property="og:title" content="7. Sınıf Fen 1. Dönem Uzay Çağı Test Oyunu | Set 1">
+  <meta property="og:description" content="7. sınıf fen bilimleri Uzay Çağı ünitesi için 12 soruluk iki takımlı bilgi oyunu.">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="7. Sınıf Fen 1. Dönem Uzay Çağı Test Oyunu | Set 1">
+  <meta name="twitter:description" content="7. sınıf fen bilimleri Uzay Çağı ünitesi için 12 soruluk iki takımlı bilgi oyunu.">
+  <link rel="stylesheet" href="oyun.css?v=12">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="sorucevap_1.html" aria-label="Uzay ve Evren ana sayfa">
+        <img class="brand-logo" src="logo.png" alt="">
+        <span>UZAY VE EVREN</span>
+      </a>
+      <div class="topbar-actions">
+        <button class="sound-toggle" id="sound-toggle" type="button" aria-pressed="true">Ses açık</button>
+        <a class="switch-link" href="sorucevap_2.html">2. sete geç <span aria-hidden="true">↗</span></a>
+      </div>
+    </header>
+
+    <section class="intro">
+      <div class="eyebrow">© Ahmet Furkan Ergül</div>
+      <h1>Uzay <span>Yarışı</span></h1>
+      <p>7. sınıf fen bilimleri 1. dönem Uzay Çağı ünitesi için iki takım yarışıyor. Her soruda 30 saniyeniz var.<br class="desktop-break"> İlk cevap veren kazanır!</p>
+    </section>
+
+    <section class="game-panel setup-panel" id="setup-panel" aria-labelledby="setup-title">
+      <div class="panel-heading">
+        <div>
+          <span class="step-label">ÖNCE TAKIMLAR</span>
+          <h2 id="setup-title">Takımları seçin</h2>
+        </div>
+        <label class="round-chip time-picker" for="round-seconds">Soru süresi
+          <select id="round-seconds" aria-label="Soru süresi"></select>
+        </label>
+      </div>
+      <div class="team-setup-grid">
+        <label class="setup-team team-one">
+          <span class="setup-team-top"><span class="team-icon">1</span><span>1. TAKIM</span></span>
+          <span class="field-label">Takım adı</span>
+          <input id="team1-name" type="text" maxlength="18" value="Takım 1" autocomplete="off">
+          <span class="field-label">Takım üyesi sayısı</span>
+          <select id="team1-size" aria-label="1. takım üyesi sayısı"></select>
+          <span class="field-hint">Her oyuncu maçta bir kez seçilir.</span>
+        </label>
+        <div class="versus" aria-hidden="true">VS</div>
+        <label class="setup-team team-two">
+          <span class="setup-team-top"><span class="team-icon">2</span><span>2. TAKIM</span></span>
+          <span class="field-label">Takım adı</span>
+          <input id="team2-name" type="text" maxlength="18" value="Takım 2" autocomplete="off">
+          <span class="field-label">Takım üyesi sayısı</span>
+          <select id="team2-size" aria-label="2. takım üyesi sayısı"></select>
+          <span class="field-hint">Doğru cevap 100 puan kazandırır.</span>
+        </label>
+      </div>
+      <button class="primary-button" id="start-button" type="button">Hadi başlayalım <span aria-hidden="true">→</span></button>
+      <p class="setup-note">12 soru oynanır. Oyuncular bitince maç sona erer.</p>
+    </section>
+
+    <section class="game-panel play-panel" id="play-panel" hidden aria-live="polite">
+      <div class="scorebar">
+        <div class="score-team score-one"><span class="score-name" id="score1-name">1. Takım</span><strong id="score1">0</strong><span class="score-unit">PUAN</span></div>
+        <div class="timer-wrap">
+          <span class="timer-label">SÜRE</span>
+          <div class="timer" id="timer" role="timer" aria-label="Kalan süre">30</div>
+          <div class="timer-track"><span id="timer-progress"></span></div>
+        </div>
+        <div class="score-team score-two"><span class="score-name" id="score2-name">2. Takım</span><strong id="score2">0</strong><span class="score-unit">PUAN</span></div>
+      </div>
+
+      <div class="draw-area">
+        <div class="draw-team"><span class="draw-team-name" id="draw1-name">1. TAKIM</span><div class="draw-number" id="draw1">—</div><span class="draw-caption" id="draw1-caption">SEÇİLİYOR</span></div>
+        <div class="draw-separator"><span>VS</span><i></i></div>
+        <div class="draw-team"><span class="draw-team-name" id="draw2-name">2. TAKIM</span><div class="draw-number" id="draw2">—</div><span class="draw-caption" id="draw2-caption">SEÇİLİYOR</span></div>
+      </div>
+
+      <div class="round-controls">
+        <p id="round-instruction">Numaralar çekiliyor…</p>
+        <button class="primary-button round-start-button" id="round-start-button" type="button" hidden>Soruyu aç <span aria-hidden="true">→</span></button>
+      </div>
+
+      <div class="question-stage" id="question-stage" hidden>
+        <div class="question-heading">
+          <span class="question-counter" id="question-counter">SORU 01 <i>/ 12</i></span>
+          <span class="question-topic"><span aria-hidden="true"></span> UZAY VE EVREN</span>
+        </div>
+        <h2 class="question-text" id="question-text"></h2>
+
+        <div class="answer-grid">
+          <section class="answer-team answer-one" id="answer-team1" aria-label="1. takım cevapları">
+            <div class="answer-team-heading"><span class="answer-team-dot"></span><span id="answer1-name">1. Takım</span><small id="answer1-status">Sıra sizde</small></div>
+            <div class="options" id="options1"></div>
+          </section>
+          <section class="answer-team answer-two" id="answer-team2" aria-label="2. takım cevapları">
+            <div class="answer-team-heading"><span class="answer-team-dot"></span><span id="answer2-name">2. Takım</span><small id="answer2-status">Sıra sizde</small></div>
+            <div class="options" id="options2"></div>
+          </section>
+        </div>
+        <div class="feedback" id="feedback" role="status"></div>
+      </div>
+    </section>
+
+    <footer class="footer-note"><span></span> Ahmet Furkan Ergül</footer>
+  </main>
+
+  <div class="result-overlay" id="result-overlay" hidden>
+    <section class="result-card" role="dialog" aria-modal="true" aria-labelledby="result-title">
+      <div class="result-spark" aria-hidden="true"></div>
+      <span class="step-label">MAÇ BİTTİ</span>
+      <h2 id="result-title">Oyun bitti!</h2>
+      <p id="result-message"></p>
+      <div class="result-scores">
+        <div><span id="result1-name">1. Takım</span><strong id="result1-score">0</strong></div>
+        <div><span id="result2-name">2. Takım</span><strong id="result2-score">0</strong></div>
+      </div>
+      <button class="primary-button" id="restart-button" type="button">Bir daha oynayalım <span aria-hidden="true">↻</span></button>
+    </section>
+  </div>
+
+  <div class="consent-overlay" id="consent-overlay" aria-live="polite">
+    <div class="consent-modal" role="dialog" aria-modal="true" aria-labelledby="consent-title">
+      <span class="consent-eyebrow">Kullanım şartı</span>
+      <h2 class="consent-title" id="consent-title">Oyunu kullanmadan önce şartları okuyun.</h2>
+      <p class="consent-text">Bu oyun, Ahmet Furkan Ergül’e ait içerik ve fikri mülkiyet hakkına sahiptir. Oyun, sorular, metinler, görseller, tasarım ve akış izinsiz şekilde kopyalanamaz, çoğaltılamaz, yayınlanamaz, dağıtılamaz veya ticari amaçla kullanılamaz.</p>
+      <div class="consent-box">
+        <strong>Yasak ve sorumluluk kapsamı:</strong>
+        <ul class="consent-list">
+          <li>Hile, otomasyon, sahte cevap, ekran görüntüsü veya başka bir yöntemle oyunun akışını manipüle etmek yasaktır.</li>
+          <li>İçeriğin hak sahibinin izni olmadan üçüncü taraf platformlarda paylaşılması, yeniden yayınlanması veya başka bir internet adresinde yayımlanması yasaktır.</li>
+          <li>Bu oyunun tüm hakları sahibine aittir. Kurallara uyulmadığı takdirde gerekli hukuki ve idari işlemler başlatılabilir.</li>
+        </ul>
+      </div>
+      <div class="consent-actions">
+        <label class="consent-check"><input id="consent-checkbox" type="checkbox"> Koşulları okudum ve kabul ediyorum.</label>
+        <button class="consent-button" id="consent-button" type="button" disabled>Oyuna başla</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.GAME_QUESTIONS = [
+      { q: "Uzaydaki gaz ve toz bulutlarının bir araya gelmesiyle yeni yıldızların oluşmasını sağlayan devasa yapılara ne ad verilir?", options: ["Takımyıldız", "Bulutsu", "Galaksi", "Kara delik"], answer: 1 },
+      { q: "Büyük kütleli yıldızların yaşamlarının son evresinde patlayarak enerjilerini tüketmesi olayına ne denir?", options: ["Süpernova", "Beyaz cüce", "Kırmızı dev", "Takımyıldız"], answer: 0 },
+      { q: "Güneş gibi küçük ve orta kütleli yıldızlar, merkezlerindeki yakıt tükendiğinde hangi gök cismine dönüşür?", options: ["Süpernova", "Kara delik", "Beyaz cüce", "Nötron yıldızı"], answer: 2 },
+      { q: "Dünya'dan bakıldığında bir arada duran ve hayali çizgilerle birleştirilerek şekillere benzetilen yıldız gruplarına ne denir?", options: ["Galaksi", "Bulutsu", "Güneş sistemi", "Takımyıldız"], answer: 3 },
+      { q: "Güneş Sistemi'nin içinde bulunduğu sarmal galaksinin adı nedir?", options: ["Andromeda", "Samanyolu", "Büyük Okyanus", "Sarmal galaksi"], answer: 1 },
+      { q: "Gök cisimlerini incelemek için yüksek dağ tepelerine kurulan, teleskopların bulunduğu yere ne ad verilir?", options: ["Uzay istasyonu", "Gözlemevi (rasathane)", "Laboratuvar", "Uydu merkezi"], answer: 1 },
+      { q: "Yeryüzündeki teleskoplar uzay teleskoplarına göre neden daha bulanık görüntü verebilir?", options: ["Gök cisimlerinin yaydığı ışık nedeniyle", "Yıldızların sıcaklıkları nedeniyle", "Dünya atmosferi ve hava olayları nedeniyle", "Güneş'in çekim gücü nedeniyle"], answer: 2 },
+      { q: "İnsanlar tarafından üretilip Dünya yörüngesine yerleştirilen; haberleşme ve televizyon yayınlarında kullanılan araç hangisidir?", options: ["Uzay sondası", "Yapay uydu", "Uzay mekiği", "Meteor"], answer: 1 },
+      { q: "Gezegenleri ve diğer gök cisimlerini yakından incelemek için uzaya gönderilen insansız araçlara ne denir?", options: ["Uzay sondası", "Yapay uydu", "Uzay istasyonu", "Takımyıldız"], answer: 0 },
+      { q: "Astronotların uzayda kalıp deneyler yapmasını sağlayan yapı hangisidir?", options: ["Uzay sondası", "Gözlemevi", "Uzay istasyonu", "Roket"], answer: 2 },
+      { q: "Görevini tamamlamış uyduların ve roket parçalarının Dünya çevresinde başıboş dönmesiyle oluşan kirlilik türü nedir?", options: ["Işık kirliliği", "Uzay kirliliği", "Çevre kirliliği", "Hava kirliliği"], answer: 1 },
+      { q: "Şehir ışıklarının gökyüzünü gözlemlemeyi zorlaştırmasıyla ortaya çıkan olumsuz durum nedir?", options: ["Işık kirliliği", "Ses kirliliği", "Hava kirliliği", "Görüntü kirliliği"], answer: 0 }
+    ];
+  </script>
+  <script src="oyun.js?v=10" defer></script>
+</body>
+</html>

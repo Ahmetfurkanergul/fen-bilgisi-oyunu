@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10142c">
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="apple-touch-icon" href="logo.png">
+  <title>7. Sınıf Fen Bilimleri Uzay Çağı Oyunu | Uzay Yarışı</title>
+  <meta name="description" content="7. sınıf fen bilimleri 1. dönem Uzay Çağı ünitesi için iki takımlı bir oyun. Uzay ve evren sorularını çözerek bilgini eğlenceli şekilde pekiştir.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="tr_TR">
+  <meta property="og:site_name" content="Uzay Yarışı">
+  <meta property="og:title" content="7. Sınıf Fen Bilimleri Uzay Çağı Oyunu | Uzay Yarışı">
+  <meta property="og:description" content="7. sınıf fen bilimleri 1. dönem Uzay Çağı ünitesi için iki takımlı bilgi yarışması.">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="7. Sınıf Fen Bilimleri Uzay Çağı Oyunu | Uzay Yarışı">
+  <meta name="twitter:description" content="7. sınıf fen bilimleri 1. dönem Uzay Çağı ünitesi için iki takımlı bilgi yarışması.">
+  <style>
+    :root {
+      color-scheme: dark;
+      --ink: #f5f7ff;
+      --muted: #adb6d3;
+      --cyan: #68e0e9;
+      --purple: #c3a0ff;
+      --card: rgba(20, 25, 52, .86);
+      font-family: "Segoe UI", Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      min-width: 320px;
+      min-height: 100vh;
+      margin: 0;
+      color: var(--ink);
+      background:
+        linear-gradient(180deg, rgba(9, 13, 34, .77), rgba(9, 13, 34, .91)),
+        url("uzay2.png") center / cover fixed,
+        #10142c;
+    }
+    a { color: inherit; }
+    .page { width: min(1180px, calc(100% - 48px)); margin: 0 auto; padding: 25px 0 28px; }
+    .topbar { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .brand-logo { width: 42px; height: 42px; flex: 0 0 auto; border-radius: 50%; object-fit: cover; }
+    .brand-name { font-size: 13px; font-weight: 800; letter-spacing: .16em; }
+    .brand-name span { color: var(--cyan); }
+    .top-note { color: #c6cce0; font-size: 13px; }
+
+    .hero { max-width: 760px; margin: 72px auto 48px; text-align: center; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 9px; color: var(--cyan); font-size: 12px; font-weight: 800; letter-spacing: .17em; text-transform: uppercase; }
+    .eyebrow::before, .eyebrow::after { width: 23px; height: 1px; background: rgba(104, 224, 233, .55); content: ""; }
+    h1 { margin: 17px 0 12px; font-size: clamp(42px, 7vw, 76px); line-height: 1; letter-spacing: -.055em; }
+    h1 span { color: var(--cyan); }
+    .hero p { max-width: 560px; margin: 0 auto; color: var(--muted); font-size: clamp(15px, 2vw, 18px); line-height: 1.65; }
+    .choose-title { display: flex; align-items: center; gap: 14px; margin: 0 0 18px; color: #e9ecf8; font-size: 14px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+    .choose-title::after { height: 1px; flex: 1; background: rgba(180, 192, 224, .2); content: ""; }
+    .games { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+    .game-card {
+      position: relative;
+      display: flex;
+      min-height: 270px;
+      flex-direction: column;
+      overflow: hidden;
+      padding: 27px;
+      border: 1px solid rgba(151, 177, 222, .24);
+      border-radius: 10px;
+      background: linear-gradient(145deg, rgba(25, 32, 66, .95), var(--card));
+      box-shadow: 0 18px 55px rgba(3, 7, 24, .22);
+      text-decoration: none;
+      transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
+    }
+    .game-card:hover { transform: translateY(-4px); border-color: rgba(104, 224, 233, .7); box-shadow: 0 22px 60px rgba(3, 7, 24, .36); }
+    .game-card.second:hover { border-color: rgba(195, 160, 255, .7); }
+    .game-card:focus-visible { outline: 3px solid white; outline-offset: 4px; }
+    .card-top { display: flex; align-items: center; justify-content: space-between; }
+    .set-tag { padding: 7px 10px; border: 1px solid rgba(104, 224, 233, .26); border-radius: 5px; color: var(--cyan); background: rgba(104, 224, 233, .07); font-size: 11px; font-weight: 800; letter-spacing: .1em; }
+    .second .set-tag { border-color: rgba(195, 160, 255, .3); color: var(--purple); background: rgba(195, 160, 255, .08); }
+    .card-number { color: rgba(232, 238, 255, .45); font-size: 13px; font-weight: 700; letter-spacing: .12em; }
+    .game-card h2 { position: relative; z-index: 1; margin: 35px 0 8px; font-size: clamp(24px, 3vw, 31px); letter-spacing: -.035em; }
+    .game-card p { position: relative; z-index: 1; max-width: 360px; margin: 0; color: var(--muted); font-size: 14px; line-height: 1.6; }
+    .card-bottom { position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: auto; padding-top: 24px; }
+    .card-info { color: #c3cbe0; font-size: 12px; }
+    .play-link { display: inline-flex; min-height: 44px; align-items: center; gap: 10px; padding: 0 15px; border-radius: 12px; color: #121a35; background: linear-gradient(100deg, #69e0e7, #8be9d0); box-shadow: inset 0 0 0 1px rgba(9, 19, 34, .12), 0 8px 18px rgba(105, 224, 231, .15); font-size: 13px; font-weight: 800; }
+    .second .play-link { background: linear-gradient(100deg, #c6a6ff, #e0bbf1); box-shadow: inset 0 0 0 1px rgba(9, 19, 34, .12), 0 8px 18px rgba(198, 166, 255, .16); }
+    .arrow { font-size: 18px; line-height: 1; }
+    .footer { display: flex; justify-content: space-between; gap: 14px; margin-top: 35px; padding-top: 17px; border-top: 1px solid rgba(180, 192, 224, .16); color: #929dbd; font-size: 12px; }
+
+    @media (max-width: 700px) {
+      .page { width: min(100% - 28px, 520px); padding-top: 17px; }
+      .top-note { font-size: 11px; }
+      .hero { margin: 54px auto 35px; }
+      .games { grid-template-columns: 1fr; gap: 14px; }
+      .game-card { min-height: 235px; padding: 21px; }
+      .game-card h2 { margin-top: 27px; }
+      .footer { flex-direction: column; text-align: center; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <a class="brand" href="index.html" aria-label="Uzay Çağı">
+        <img class="brand-logo" src="logo.png" alt="Uzay Yarışı logosu">
+        <span class="brand-name">UZAY <span>VE</span> EVREN</span>
+      </a>
+      <span class="top-note">© Ahmet Furkan Ergül</span>
+    </header>
+
+    <section class="hero">
+      <div class="eyebrow">7. Sınıf Fen Bilimleri · 1. Dönem</div>
+      <h1>Uzay <span>Yarışı</span></h1>
+      <p>Uzay Çağı ünitesi ve uzay-evren konularını iki takımlı bilgi oyunuyla tekrar edin. 2 gruba ayrılın ve yarışı başlatın!</p>
+    </section>
+
+    <section aria-labelledby="choose-title">
+      <h2 class="choose-title" id="choose-title">Bir oyun seçin</h2>
+      <div class="games">
+        <a class="game-card" href="sorucevap_1.html">
+          <div class="card-top">
+            <span class="set-tag">1. SORU SETİ</span>
+            <span class="card-number">01 / 02</span>
+          </div>
+          <h2>Uzay ve Evren</h2>
+          <p>İlk soru setiyle başlayın. Takımları seçin, oyuncuları belirleyin ve cevapları yarıştırın.</p>
+          <div class="card-bottom">
+            <span class="card-info">12 soru · 2 takım</span>
+            <span class="play-link">Oyuna git <span class="arrow" aria-hidden="true">→</span></span>
+          </div>
+        </a>
+
+        <a class="game-card second" href="sorucevap_2.html">
+          <div class="card-top">
+            <span class="set-tag">2. SORU SETİ</span>
+            <span class="card-number">02 / 02</span>
+          </div>
+          <h2>Uzay ve Evren</h2>
+          <p>Yeni sorularla devam edin. Aynı takımlı yarış, bu kez farklı sorularla.</p>
+          <div class="card-bottom">
+            <span class="card-info">12 farklı soru · 2 takım</span>
+            <span class="play-link">Oyuna git <span class="arrow" aria-hidden="true">→</span></span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span>© Ahmet Furkan Ergül</span>
+      <span>Fen bilgisi · Uzay ve Evren</span>
+    </footer>
+  </main>
+</body>
+</html>
